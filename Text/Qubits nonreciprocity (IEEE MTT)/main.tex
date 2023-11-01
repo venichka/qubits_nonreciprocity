@@ -19,7 +19,7 @@
 
 
 \begin{document}
-\title{Nonreciprocity in the system of two superconducting qubits coupled to a 1D waveguide: influence of higher energy levels and quantum correlations}
+\title{Nonreciprocity for Superconducting Qubits Coupled to a 1D Waveguide: Beyond Two-Level Approximation}
 \author{Nikita Nefedkin, Andrea Al{\`u} \IEEEmembership{Fellow, IEEE}
 \thanks{Nikita Nefedkin (nnefedkin@gc.cuny.edu) is with the Advanced Science Research Center, City University of New York, New York, New York, 10031, USA.}
 \thanks{Andrea Al\`u (aalu@gc.cuny.edu) is with the Advanced Science Research Center and Graduate Center, City University of New York, New York, New York, 10031, USA.}}
@@ -30,7 +30,7 @@
 \maketitle
 
 \begin{abstract}
-This paper delves into the intricacies of nonreciprocity in a system composed of two superconducting qubits operating in a transmon regime and coupled to a one-dimensional (1D) waveguide. Nonreciprocity, characterized by asymmetrical signal transmission and reflection, is a phenomenon of increasing interest in quantum technologies. Our investigation focuses on how theoretical approximations impact observed nonreciprocal effects and highlights crucial factors that must be considered. By employing the real parameters of the qubits, we uncover significant alterations in system dynamics when higher energy levels are included in the transmon regime. This leads to a reduction in nonreciprocity, with the diode efficiency falling below the two-level approximation limit of $2/3$. Additionally, the statistical properties of the system undergo significant changes, particularly in the coherent functions for transmitted and reflected signals. The emergence of additional population transfer channels and the critical role of quantum correlations between qubits underscore the necessity of precise modelling. These findings have direct implications for quantum device engineering, offering insights that can enhance the design of more efficient quantum devices and advanced quantum communication systems.
+This paper delves into the intricacies of nonreciprocity in a system composed of two superconducting qubits operating in a transmon regime and coupled to a one-dimensional (1D) waveguide. Nonreciprocity, characterized by asymmetrical signal transmission, is a phenomenon of increasing interest in quantum technologies, as it enables one-way signal propagation and isolation. Our investigation derives the conditions to obtain nonreciprocity in a qubit-loaded waveguide and discusses how common approximations may impact the observed nonreciprocal effects, highlighting crucial factors that must be considered in designing such systems. By employing realistic system parameters, we unveil significant effects on the system dynamics when higher energy levels are included in the transmon regime. This leads to a reduction of nonreciprocity compared to the ideal scenario, with the diode efficiency falling below the two-level approximation limit of $2/3$. Additionally, the statistical properties of the system undergo significant changes, particularly in the coherent functions for transmitted and reflected signals. The emergence of additional population transfer channels and the critical role of quantum correlations between qubits underscore the necessity of precise modelling. Our findings have implications for quantum device engineering, offering insights that can enhance the design of more efficient quantum technology and advanced quantum communication systems.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -40,25 +40,26 @@ Superconducting qubits, nonreciprocity, subradiance, quantum correlations
 
 \section{Introduction}
 
-\IEEEPARstart{S}{uperconducting} qubits have established themselves as a potential platform for constructing nonreciprocal devices in the field of quantum technologies~\cite{rosario_hamann_nonreciprocity_2018, gheeraert2020programmable, rymarz2021hardware, kutsaev2021up, redchenko2023tunable}. These qubits, characterized by their convenience and controllability, hold significant promise for applications in quantum information processing and quantum device engineering. The pursuit of efficient and precise manipulation of quantum states, signal routing and processing necessitates a profound understanding of nonreciprocal behaviour in such systems.
+\IEEEPARstart{S}{uperconducting} qubits have established themselves as an important platform for quantum computing. Their inherent nonlinearity can also offer a natural platform for enabling nonreciprocity in the context of quantum technologies~\cite{rosario_hamann_nonreciprocity_2018, gheeraert2020programmable, rymarz2021hardware, kutsaev2021up, redchenko2023tunable}, which may be important to enable isolation and one-way flows of data in complex computing networks. The pursuit of efficient and precise manipulation of quantum states, signal routing and processing necessitates the implementation of nonreciprocal responses in quantum information processing and computing.
 
-Nonreciprocity, characterized by the non-symmetrical response of a system to signal transmission and reflection, has garnered considerable attention in recent years~\cite{caloz2018electromagnetic,nassar2020nonreciprocity,manipatruni2009optical, mahoney2017chip,zhang2018thermal, rosario_hamann_nonreciprocity_2018, nefedkin_nonreciprocal_2023}. Previous studies have highlighted its potential in quantum signal routing, amplification, and information processing~\cite{Furnkranz2020Quantum, Kimble2008quantum}. However, the extent to which theoretical approximations influence observed nonreciprocal effects and the critical factors that demand consideration for accurate modelling remain areas of active investigation.
+Nonreciprocity is associated with non-symmetrical signal transmission and has garnered considerable attention in recent years for classical and quantum settings~\cite{caloz2018electromagnetic,kord2020microwave, manipatruni2009optical, mahoney2017chip,zhang2018thermal, rosario_hamann_nonreciprocity_2018, nefedkin_nonreciprocal_2023}. Previous studies have highlighted its potential for quantum signal routing, amplification, and information processing~\cite{Furnkranz2020Quantum, Kimble2008quantum}. However, the extent to which theoretical approximations influence observed nonreciprocal effects and the critical factors that demand consideration for accurate modelling remain areas of active investigation.
 
-This work delves into the intricacies of nonreciprocal quantum systems, with a particular focus on a system comprising two superconducting qubits operating in a transmon regime, coupled to a one-dimensional (1D) waveguide~\cite{dai_rectification_2015, muller_nonreciprocal_2017, rosario_hamann_nonreciprocity_2018, Nefedkin2022}. The primary objective is to scrutinize the impact of theoretical approximations on nonreciprocal phenomena and to delineate the essential factors governing these effects.
+This work delves into the intricacies of nonreciprocal quantum systems, with a particular focus on a system comprising of superconducting qubits operating in a transmon regime, coupled to a one-dimensional (1D) waveguide~\cite{dai_rectification_2015, muller_nonreciprocal_2017, rosario_hamann_nonreciprocity_2018, Nefedkin2022}. In the pursuit of nonreciprocity, several mechanisms have been explored. These mechanisms include utilising magnetic bias, time modulation, and nonlinearities. While magnetic bias and time modulation have found their place in classical systems~\cite{Pozar2011Microwave, Hogan1952Ferromagnetic, sounas_non-reciprocal_2017, wang2020nonreciprocity}, their seamless integration into the quantum domain poses significant challenges. Magnetic bias, a common approach to achieve nonreciprocity, presents compatibility issues in quantum technologies due to the lack of tunability, bulkiness, and requirement for large magnetic fields~\cite{bi2011chip,zhang2019monolithic,ren2021single}. The time modulation approach, which breaks time-invariance, also leads to nonreciprocal behaviour~\cite{sounas_non-reciprocal_2017, wang2020nonreciprocity}. It reveals a potential for compact, low-energy, integrated nonreciprocal devices; however, it proves intricate to implement in quantum systems. Nonlinearities, in turn, offer a particularly appealing avenue for breaking reciprocity in the quantum realm. The distinctive feature lies in the intrinsic nonlinearity of qubits, which positions them as promising candidates for realizing nonreciprocity in quantum technologies. 
+The primary objective of this work is to explain the mechanisms of reciprocity-breaking based on qubit nonlinearity and scrutinize the impact of conventional approximations to model these phenomena, delineating the essential factors governing these effects.
 
-In this study, we employ the real parameters of the qubits obtained from ref.~\cite{rosario_hamann_nonreciprocity_2018}. Utilizing them, we explore the dynamics of a system with the potential for nonreciprocity. Usually, explanations of the mechanism of the nonreciprocity emergence are grounded in the simplified two-level qubit model~\cite{lalumiere_input-output_2013, muller_nonreciprocal_2017}. In this model, two one-excitation states, dark and bright, are populated differently depending on the direction of excitation. In one scenario, constructive interference between the population transfer channels involving ground, bright, and dark states leads to the population of the dark state and, consequently, an increase in the intensity of the transmitted signal. In the other case, destructive interference among these channels results in all states, except the ground state, remaining unpopulated, causing the signal to be fully reflected. It is the interplay between these two behaviours that gives rise to the nonreciprocity of the system. 
+In this study, we employ realistic parameters for the involved qubits, obtained from ref.~\cite{rosario_hamann_nonreciprocity_2018}. Utilizing them, we explore the dynamics of a system with the potential for nonreciprocity. Nonreciprocity has been shown to emerge through the nonlinear response associated with the simplified two-level model of a qubit ~\cite{lalumiere_input-output_2013, muller_nonreciprocal_2017}. In this model, two one-excitation states, dark and bright, are populated differently depending on the direction of excitation. For excitation from one direction, constructive interference between the population transfer channels involving ground, bright, and dark states leads to the population of a dark state and, consequently, an increase in the intensity of the transmitted signal. In the other direction, destructive interference among these channels results in all states, except the ground state, remaining unpopulated, causing the signal to be fully reflected. It is the interplay between these two behaviours that can give rise to strong nonreciprocity, and it has been shown that within this approach, the maximum contrast in transmission ratios for opposite excitation directions is $2/3$~\cite{muller_nonreciprocal_2017, Nefedkin2022}.
 
-Transitioning into a transmon regime characterized by weak anharmonicity~\cite{krantz_quantum_2019}, the potential impact of higher energy levels within the qubits becomes a pivotal consideration. Within this regime, our investigation reveals a notable shift in the system's behaviour, notably a reduction in nonreciprocity, exemplified by a substantial decrease in the nonreciprocity (diode) efficiency, falling below the conventional two-level system limit of $2/3$~\cite{muller_nonreciprocal_2017}. This phenomenon is intrinsically tied to the intricate quantum dynamics of the system, which is comprehensively explored in this study.
+However, this qubit model is rather simplified, and here we discuss how, considering a transmon regime characterized by weak anharmonicity~\cite{krantz_quantum_2019}, the impact of higher energy levels within the qubits becomes a pivotal consideration to assess the opportunity for nonreciprocity. Within this regime, our investigation reveals a notable change in the system's response, notably a reduction in nonreciprocity, exemplified by a substantial decrease in the nonreciprocity efficiency, falling below the conventional two-level system limit of $2/3$~\cite{muller_nonreciprocal_2017}. This phenomenon is intrinsically tied to the intricate quantum dynamics of the system, which is comprehensively explored in this study.
 
-This behaviour is attributed to the emergence of two additional population transfer channels associated with symmetric and antisymmetric qubit states with two excitations. These channels come into play under moderate incident powers, where they interfere destructively with the existing channels, ultimately diminishing the nonreciprocity effect. Importantly, this phenomenon persists even when considering more than three energy levels of the qubits, although with minor quantitative variations in populations, transmissions, and reflections.
+The difference in response can be attributed to the emergence of two additional population transfer channels associated with symmetric and antisymmetric qubit states with two excitations. These channels come into play under moderate incident powers, where they interfere destructively with the existing channels, ultimately diminishing the nonreciprocity contrast. Importantly, this phenomenon persists even when considering more than three energy levels of the qubits, although with minor quantitative variations in population, transmission, and reflection levels.
 
-Furthermore, our investigation underscores the pivotal role of accounting for quantum correlations between the qubits to model the nonreciprocity effect accurately. Conventional semiclassical models, relying on factorized expectation values of operator products, inadequately capture the system's dynamics in some scenarios~\cite{carmichael1999statistical}. This deficiency is primarily due to the emergence of strong correlations, such as $\langle \sigma_j^+ \sigma_k \rangle$ for $j\neq k$, which become prominent in the nonreciprocal regime. Notably, these correlations diminish at lower incident powers, thereby rendering the semiclassical approximation applicable in this regime.
+Our investigation also underscores the pivotal role of accounting for quantum correlations between the qubits to model the nonreciprocity effect accurately. Conventional semiclassical models, relying on factorized expectation values of operator products, inadequately capture the system's dynamics in some scenarios~\cite{carmichael1999statistical}. This deficiency is primarily due to the emergence of strong correlations, such as $\langle \sigma_j^+ \sigma_k \rangle$ for $j\neq k$, which become prominent in the nonreciprocal regime. Notably, these correlations are smaller at lower incident powers, thereby rendering the semiclassical approximation applicable in this regime.
 
 The insights derived from this investigation bear profound implications for the field of quantum device engineering. A comprehensive understanding of the relationship between theoretical approximations and nonreciprocal effects paves the way for developing more efficient and versatile quantum devices, particularly in the context of quantum diodes and signal processing. Moreover, the emphasis on precision in modelling is a valuable asset in advancing the design and implementation of advanced quantum communication systems. By elucidating these findings in greater detail, this paper aims to provide a thorough analysis of the system, the mathematical models utilized, and the empirical outcomes.
 
 
-\section{Two superconducting qubits coupled to a 1D waveguide: theoretical description}
-\noindent The system of two qubits coupled to a 1D waveguide has been vastly studied theoretically in Refs.~\cite{muller_nonreciprocal_2017, dai_rectification_2015, Nefedkin2022, trivedi_fano-qubits_2023, lalumiere_input-output_2013} and experimentally in Refs.~\cite{rosario_hamann_nonreciprocity_2018}. 
+\section{Theoretical Description}
+\noindent Systems composed by two qubits coupled to a 1D waveguide have been vastly studied theoretically in Refs.~\cite{muller_nonreciprocal_2017, dai_rectification_2015, Nefedkin2022, trivedi_fano-qubits_2023, lalumiere_input-output_2013} and experimentally in Refs.~\cite{rosario_hamann_nonreciprocity_2018}. 
 In most theoretical works, the waveguide degrees of freedom are adiabatically excluded, and the effective Hamiltonian describes qubits interacting with each other through the Green's tensor of the waveguide.
 Excitations in the waveguide are considered to be in a coherent state and can be treated classically.
 We use this approach in this work and derive an effective Hamiltonian and the master equation, eliminating the waveguide degrees of freedom.
@@ -74,7 +75,7 @@ A typical superconducting qubit circuit consists of two main elements: the Josep
 \end{figure}
 
 The Josephson junction subcircuit is characterized by the junction inductance $L_J$ and the junction self-capacitance, $C_J$, which is usually much larger (for the conventional circuit designs)~\cite{krantz_quantum_2019}.
-The Hamiltonian of the qubit, Fig.~\ref{fig:01}, is written in generalized circuit coordinates, namely, the node flux $\Phi$ and the capacitor charge $Q$, after canonical quantization~\cite{}.
+The Hamiltonian of the qubit, Fig.~\ref{fig:01}, is written in generalized circuit coordinates, namely, the node flux $\Phi$ and the capacitor charge $Q$, after canonical quantization.
 It has the form:
 \begin{equation}\label{eq:01}
     H = 4 E_C N^2 - E_J \cos \phi,
@@ -110,7 +111,7 @@ The cosine potential of the Josephson junction with Josephson energy $E_J$ can b
 \end{equation}
 The first term within the series is quadratic, giving rise to the eigenvalues and eigenfunctions of a quantum harmonic oscillator.
 The subsequent term, being quadric, introduces modifications to the eigensolutions and perturbs the harmonic energy structure.
-It is worth noting that the presence of a negative coefficient in the quartic term implies that the anharmonicity $\alpha = \omega_{12} - \omega_{01}$, which represents the difference in frequency between the lowest two energy levels and the subsequent two, is inherently negative. 
+It is worth noting that the presence of a negative coefficient in the quartic term implies that the anharmonicity $\alpha = \omega_{12} - \omega_{01}$, which represents the difference in frequency between the lowest two energy levels and the subsequent two, is inherently negative~\ref{fig:02}(a). 
 Consequently, its maximum magnitude cannot be arbitrarily increased. 
 In the context of the transmon qubit, $\alpha$ is typically engineered to be within the range of 100–300 MHz, where $\alpha = -E_C$.
 
@@ -143,7 +144,7 @@ It takes the form:
     H_I &= \hbar \sum_j g_j (\Omega_j + \Omega_j^+) (a_j + a_j^\dag), \\
     H &= H_Q + H_W + H_I,
 \end{align}
-where $\omega_j$ is the transition frequency of the $j$th qubit; $a_{R/L}(\omega)$ is the bosonic annihilation operator of the right/left propagating photon in the waveguide; $g_j$ is the dimensionless coupling constant between the field in the waveguide and the $j$th qubit; $\Omega_j = - i \int_0^\infty d \omega \sqrt{\omega} \left( a_L(\omega) e^{-i \omega x_j / v} + a_R(\omega) e^{i \omega x_j / v} \right)$ is an incident field amplitude at the position of the $j$th atom.
+where $\omega_j$ is the transition frequency of the $j$th qubit; $a_{R/L}(\omega)$ is the bosonic annihilation operator of the right/left (R/L) propagating photon in the waveguide; $g_j$ is the dimensionless coupling constant between the field in the waveguide and the $j$th qubit; $\Omega_j = - i \int_0^\infty d \omega \sqrt{\omega} \left( a_L(\omega) e^{-i \omega x_j / v} + a_R(\omega) e^{i \omega x_j / v} \right)$ is an incident field amplitude at the position of the $j$th atom.
 Note that, to derive this simplified form for $H_W$ and $H_I$, we have assumed that the waveguide dispersion is linear around a particular frequency of interest $\omega_0$, that is, $\omega(k) \approx \omega_0 + v (k - k_0)$, so that the wavevector of the guided mode is $k(\omega) \approx k_0 + (\omega - \omega_0) / v$~\cite{shen_theory_2009} and the common terms $k_0$ and $\omega_0/v$ can be re-absorbed in the definition of $a_L$ and $a_R$.
 
 \subsection{Effective Hamiltonian}
@@ -153,7 +154,7 @@ Suppose we are not interested in the dynamics of these modes.
 In that case, it is possible to "trace out" the waveguide degrees of freedom and obtain an effective finite-dimensional master equation describing only the evolution of the qubits. 
 This procedure is described in Refs.~\cite{gardiner2004quantum,lehmberg_radiation_1970,lalumiere_input-output_2013}. 
 We also assume that the waveguide field incident from two directions is monochromatic and is in a coherent state, with amplitudes $a_{in}^{R/L}$ and driving frequency $\omega_d$. 
-Under a Markov and rotating wave approximation, we obtain the master equation for the reduced density matrix:
+Under a Markov and rotating wave approximation (RWA), we obtain the master equation for the reduced density matrix:
 \begin{equation} \label{eq:05}
     \dot{\rho} = \frac{i}{\hbar} \left[ H_\mathrm{eff}, \rho \right] + \sum_{j,k} \frac{\Gamma_{jk}}{2} \left( 2 a_j \rho a_k^\dag - \rho a_k^\dag a_j - a_k^\dag a_j \rho \right)
 \end{equation}
@@ -173,7 +174,7 @@ The phase of the right propagating (R) or left propagating (L) wave at the posit
 Note that in the master equation (\ref{eq:05}), we do not consider dephasing processes and nonradiative losses. 
 These losses and their impact on the system's behaviour were considered in, e.g., refs.~\cite{rosario_hamann_rectangular_2019, Nefedkin2022}.
 
-\subsection{Realistic qubit system and $L_J$ dependence}
+\subsection{Realistic qubit system}
 
 In this work, we start from the electric circuit description of the qubits with realistic parameters close to the ones from ref.~\cite{rosario_hamann_nonreciprocity_2018}.
 We use the open-source library QuCAT~\cite{gely_qucat_2020} to model the qubits and obtain their parameters.
@@ -195,18 +196,20 @@ These parameters give the following frequencies, decay rates and anharmonicities
 \end{table}
 Thus, $|\alpha| \ll \omega_j$, and we can see that the qubit works in the transmon regime.
 
-In the present work, we consider the system of two qubits coupled to a waveguide in the context of breaking Lorentz reciprocity (or the nonreciprocity effect)~\cite{}.
+\subsection{Qubit nonreciprocity}
+
+In the present work, we consider the system of two qubits coupled to a waveguide in the context of breaking Lorentz reciprocity (or the nonreciprocity effect).
 It was shown in refs.~\cite{dai_rectification_2015,muller_nonreciprocal_2017,rosario_hamann_nonreciprocity_2018, Nefedkin2022} that in such a system under certain conditions, the transmission of the waves propagating in one direction is much larger than the transmission in the other direction.
-Breaking Lorentz reciprocity in passive systems (without external magnetic bias or modulation) requires from the system two key characteristics: (i) the system must be nonlinear; (ii) the system's inversion symmetry must be broken~\cite{}.
+Breaking Lorentz reciprocity in passive systems (without external magnetic bias or modulation) requires from the system two key characteristics: (i) the system must be nonlinear; (ii) the system's inversion symmetry must be broken~\cite{cotrufo2021nonlinearity1}.
 In the system under our consideration, nonlinearity naturally emerges due to anharmonicity, whereas broken inversion symmetry can be created by detuning one of the qubits.
-We consider the incident wave frequency to be in resonance with the transition frequency of the second qubit, i.e., $\omega_d / 2\pi = 7.9$ GHz.
+We consider the incident wave frequency to be in resonance with the transition frequency of the first qubit, i.e., $\omega_d / 2\pi = 7.89$ GHz.
 As mentioned above and shown in Tab.~\ref{tab:01}, to break the inversion symmetry in the system, we consider a small detuning of qubit 1.
-This asymmetry is determined by the dimensionless parameter $\delta = \frac{\omega_1 - \omega_d}{\bar{gamma}}$, $\bar{\gamma} = (\gamma_1 + \gamma_2) / 2$.
+This asymmetry is determined by the dimensionless parameter $\delta = \frac{\omega_1 - \omega_2}{\bar{gamma}}$, $\bar{\gamma} = (\gamma_1 + \gamma_2) / 2$.
 The inter-qubit distance $d$ is chosen so that the system operates near the first Fabry–Perot resonance; that is, the single-trip accumulated phase is $\varphi = \omega_d d / v = \pi - \xi$, where $\xi$ is a small tunable phase delay. 
 Following~\cite{dai_rectification_2015,muller_nonreciprocal_2017}, we set $\xi = \delta$ to compensate for the additional phase shift $-\delta$ that emerges due to small detuning of qubit 1. 
 As was shown in ref.~\cite{muller_nonreciprocal_2017}, these parameters provide the optimal asymmetry in the response of the two-qubit system to form a nonreciprocal response.
 
-In this configuration, the nonreciprocity effect is raised due to the existence of two particular states: the fast decaying bright state, $|B\rangle$, and the slow decaying dark state, $|D\rangle$.
+In this configuration, the nonreciprocity effect arises due to the existence of two particular states: the fast decaying bright state, $|B\rangle$, and the slow decaying dark state, $|D\rangle$.
 In the basis of dark and bright states, for one direction of propagating waves in the waveguide, the bright state is populated, and due to the fast decay rate, $\gamma_B > \gamma_j$, immediately emits the photon in the reverse direction. 
 Thus, the system behaves as a perfect mirror at low powers, $|a_\mathrm{in}|^2 / \gamma_B$.
 For another direction of propagating waves, the dark state becomes populated, and due to the slow decay, the population is trapped in the dark state. 
@@ -216,7 +219,7 @@ Thus, the system demonstrates nonreciprocal behaviour when the incident wave pow
 \subsection{Dark and bright states}
 
 To understand better how we can obtain the decay rates of the dark and bright states and define the states, we take a closer look at the dissipation part of the master equation (\ref{eq:05}).
-Following~\cite{gross1982superradiance, carmichael_quantum_2000, clemens_collective_2003}, we can diagonalize the coefficient matrix $(\Gamma_{jk})$ and go to collective operators or the source-mode jump operators form.
+Following~\cite{gross1982superradiance, carmichael_quantum_2000, clemens_collective_2003}, we can diagonalize the coefficient matrix $(\Gamma_{jk})$ and switch to collective operators or the source-mode jump operators form.
 The general form of the source-mode jump operators is the following:
 \begin{align}\label{eq:07}
     \vec{J} =& \sqrt{\mathbf{\Lambda}} \mathbf{B} \vec{\Sigma},\\
@@ -289,7 +292,7 @@ The operators of the output wave propagating in right and left directions take t
         a_\mathrm{out}^L &= a_\mathrm{in}^L  + \sum_j e^{i \omega_j x_j / v} \sqrt{\frac{\gamma_{j}}{2}} a_j.
     \end{aligned}
 \end{equation}
-By solving the master equation (\ref{eq:05}) with effective Hamiltonian (\ref{eq:06}) and taking the expectation values of the output operators, $\langle a_\mathrm{out}^{L / R} \rangle(t) = \text{Tr}\left( \rho(t)  a_\mathrm{out}^{L / R} \right) $, we find the transmission ($T_{R/L}$) and reflection ($R_{R/L}$) in the corresponding direction,
+By solving the master equation (\ref{eq:05}) with effective Hamiltonian (\ref{eq:06}) and taking the expectation values of the output operators, $\langle a_\mathrm{out}^{L / R} \rangle(t) = \mathrm{Tr}\left( \rho(t)  a_\mathrm{out}^{L / R} \right) $, we find the transmission ($T_{R/L}$) and reflection ($R_{R/L}$) in the corresponding direction,
 \begin{equation}\label{eq:17}
     \begin{aligned}
        T_{R/L} &= \vert \langle a_\mathrm{out}^{R/L} \rangle / \langle a_\mathrm{in}^{R/L} \rangle \vert^2, \\
@@ -303,11 +306,18 @@ To quantify the nonreciprocity level in the system, we, following refs.~\cite{da
 \end{equation}
 A large value of $\mathcal{E}$ means that the system is both highly nonreciprocal $|T_{R} - T_{L}| \gg 0$ and has large forward transmission. 
 
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.85\textwidth]{fig_3_delta-0.15}
+    \caption{Incident power ($|a_\mathrm{in}|^2 / \bar{\gamma}$) dependence of (a) transmission for R-propagating waves (red dashed lines) and L-propagating waves (blue solid lines); (b) diode efficiency; the population of the dark state $|D\rangle$ (c) and the bright state $|B\rangle$ (d) in steady-state for R- and L-propagating incident waves. All the plots are made for different numbers of levels in the qubits, namely, $N_l = 2, 3, 5$. The circle markers correspond to the solution without a rotating-wave approximation.}
+    \label{fig:03}
+\end{figure*}
+
 \subsection{Transmission, diode efficiency, and populations for two-level systems}
 
 We study the transmission in the two-qubit system depending on the dimensionless power of the excitation wave.
 We expect nonreciprocal transmission for R- and L-directions of excitations at the parameters of our choice (note we follow~\cite{rosario_hamann_nonreciprocity_2018}).
-For the simplest case, when we consider only the two lowest levels of qubits and use the RWA, transmission for R-waves is close to 0 up to the incident power comparable with $\gamma_B$. 
+For the simplest case, when we consider only the two lowest levels of qubits and use the RWA, transmission for R-waves is close to $0$ up to the incident power comparable with $\gamma_B$. 
 In contrast, for the L-waves in the power range $\gamma_D<|a_\mathrm{in}|^2 < \gamma_B$, the transmission is limited by $2/3$.
 This situation is shown in Fig.~\ref{fig:03}(a).
 Thus, the diode efficiency of the system according to the definition (\ref{eq:18}) is also limited by $2/3$, Fig.~\ref{fig:03}(b).
@@ -317,14 +327,7 @@ As shown in refs.~\cite{muller_nonreciprocal_2017, rosario_hamann_rectangular_20
 The populations of the dark and bright states are shown in Fig.~\ref{fig:03}(c,d), correspondingly.
 Note that both steady states were obtained assuming $\delta \ll |a_\mathrm{in}|/\sqrt{\bar{\gamma}}$ and both states are one-excitation states.
 Thus, we can see that the way the states' excitation is deeply dependent on the direction of the excitation in general and the phase shift between the qubits.
-Namely, the change in the sign of detuning $\delta \rightarrow - \delta$ switches the direction of the nonreciprocity effect -- for the L-waves become fully reflected; the R-waves are partially transmitted.
-
-\begin{figure*}[t]
-    \centering
-    \includegraphics[width=0.85\textwidth]{fig_3_delta-0.15}
-    \caption{Incident power ($|a_\mathrm{in}|^2 / \bar{\gamma}$) dependence of (a) transmission for R-propagating waves (red dashed lines) and L-propagating waves (blue solid lines); (b) diode efficiency; the population of the dark state $|D\rangle$ (c) and the bright state $|B\rangle$ (d) in steady-state for R- and L-propagating incident waves. All the plots are made for different numbers of levels in the qubits, namely, $N_l = 2, 3, 5$. The circle markers correspond to the solution without a rotating-wave approximation.}
-    \label{fig:03}
-\end{figure*}
+Namely, the change in the sign of detuning $\delta \rightarrow - \delta$ keeping the phase shift unchanged switches the direction of the nonreciprocity effect -- for the L-waves become fully reflected; the R-waves are partially transmitted.
 
 \subsection{Influence of the higher levels}
 
@@ -341,13 +344,16 @@ At higher powers of excitation, $|a_\mathrm{in}|^2 > \bar{\gamma}$, the transmis
 All the curves tend to the unity transmission, but with different rates -- the larger the number of levels, the slower transmission approaches unity.
 The populations of the dark and bright states also strongly depend on the number of levels in this regime.
 The populations decrease with the increase in the levels' number.
+It happens due to the occupation of higher states at high incident powers.
+
+Note that at the parameter range considered, RWA and non-RWA solutions have a good agreement and using RWA is justified; see~\ref{fig:03}.
 
 Further, we consider a two-parameter space: the power of the incident wave and the Josephson inductance of the first qubit.
 Fig.~\ref{fig:05} demonstrates the behaviour of the transmissions and the efficiency in this parametric space.
-\begin{figure*}[h]
+\begin{figure*}[t]
     \centering
     \includegraphics[width=0.85\textwidth]{fig_5}
-    \caption{(a) Diode efficiency for $N_l = 2$ and $N_l = 5$ in the parameter plane of the incident power and Josephson inductance; (b-e) transmissions for R- and L- propagating incident waves at $N_l = 2$ and $N_l = 5$ in the same parameter plane.}
+    \caption{(a) Diode efficiency for $N_l = 2$ and $N_l = 5$ in the parameter plane of the incident power and Josephson inductance; (b-e) transmissions for R- and L- propagating incident waves at $N_l = 2$ and $N_l = 5$ in the same parameter plane. Note that at the resonance, when $L_J^{(1)} = L_J^{(2)}$, the system is completely reciprocal, and efficiency is zero. Due to mesh limitations, this case is not shown.}
     \label{fig:05}
 \end{figure*}
 In general, the nonreciprocity effect is sensible to the qubits' detuning.
@@ -372,7 +378,7 @@ As discussed above, only ground and dark states are mainly populated at the nonr
 The bright and excited states remain almost unpopulated and do not play a significant role in transmission, as shown in~\cite{muller_nonreciprocal_2017}.
 For a two-level qubit, transmission is only determined by the population of the dark state. 
 For the present choice of parameters, it is $0.6$, which gives transmission equal $0.6$ as well; see Fig.~\ref{fig:03}(a).
-However, if we consider higher levels in the qubits, the steady state does not have a simple form of superposition of the ground and dark states -- higher states are also involved.
+However, if we consider higher levels of the qubits, the steady state does not have a simple form of superposition of the ground and dark states -- higher states are also involved.
 In Fig.~\ref{fig:04}, for $N_l = 3$ and $N_l = 5$, an additional state has a nonzero population compared to the two-level case.
 
 We will see two states with nonzero populations if we look closer at the steady-state density matrix at the regime when $\gamma_D < |a_\mathrm{in}|^2 < \gamma_B$.
@@ -445,7 +451,7 @@ Considering higher energy levels of qubits, we observe that the $g^{(1)}_L(\tau)
 For the transmitted signal, the coherence function in the stationary reduced its value significantly and moved close to $0.5$.
 At the same time, the higher energy levels we consider lower the curve; see the inline plot in Fig.~\ref{fig:06}(a).
 On contrary, for the reflected signal, the $g^{(1)}_{L, \mathrm{ref}}(\tau \rightarrow \infty)$ shifted to larger values and became close to $0.4$.
-The curves for higher energy levels considered tend to have slightly larger values of the correlation function.
+The curves for higher energy levels tend to have slightly larger values of the coherence function.
 
 The power spectra
 \begin{equation} \label{eq:22}
@@ -459,7 +465,7 @@ The reflected signal spectrum does not demonstrate Rabi splitting; however, due 
 The total linewidth for both reflected and transmitted signals is the same and equals $\Gamma_\mathrm{FWHM} \approx 6 \gamma_D$, as shown in ref.~\cite{rosario_hamann_nonreciprocity_2018}.
 
 The $g^{(2)}_L(\tau)$ functions, Eq.~\ref{eq:22}, are shown in Fig.~\ref{fig:06}(b).
-At these parameters, Tab.~\ref{tab:01}, the second-order correlation functions for both transmitted and reflected signals vary strongly depending on the number of qubits' energy levels considered.
+At these parameters, Tab.~\ref{tab:01}, the second-order coherence functions for both transmitted and reflected signals vary strongly depending on the number of qubits' energy levels considered.
 This behaviour is mainly due to the high detuning between the qubits: the higher states of the system become populated, the dipole moments between these states are induced, and the $g^{(2)}(0)$ function is susceptible to such changes.
 However, if we consider an order of magnitude smaller detuning in the system, we will see the real influence of the higher energy levels of qubits.
 Fig.~\ref{fig:06_1} shows the second-order coherence functions for a system with smaller detuning, i.e., $\Delta L_J = L_J^{(1)} - L_J^{(2)} = 10^{-3}$ nH and, therefore, the detuning becomes $\delta = -0.015$.
@@ -489,7 +495,7 @@ The system of equations for these variables is equivalent to the master equation
 However, due to the bulkiness of the system, we do not provide it in the main text.
 
 The Hibert space dimension for two qubits is not too large, and one can directly solve the master equation (\ref{eq:05}) and obtain the complete solution.
-However, increasing the number of qubits in the system leads to exponential growth in the dimension of the Hilbert space and a practical inability to solve the master equation for $N \gtrsim 15$ qubits.
+However, increasing the number of qubits in the system leads to exponential growth in the dimension of the Hilbert space and a practical inability to solve the master equation for already tens of qubits.
 A common way to address this challenge and to be able to describe systems composed of hundreds of qubits is to employ the so-called semiclassical (or meanfield) approximation. 
 The core idea of this approximation is to neglect quantum correlations between qubits.
 Within the semiclassical approximation, one assumes that the expectation value of a product of operators is always factorizable, i.e., $\langle O_j O_k \rangle \approx \langle O_j \rangle \langle O_k \rangle$ for any pair of operators $O_j$ and $O_k$, $j,k = 1, \ldots, N$~\cite{scully1999quantum, carmichael1999statistical}. 
@@ -538,13 +544,13 @@ In Fig.~\ref{fig:07}(c), the evolution of $|\langle \sigma_1^+ \sigma_2\rangle |
 We can see that at the powers when the nonreciprocity effect is the strongest, the correlation between the qubits is also maximal.
 Whereas at smaller incident powers, it becomes negligible.
 For instance, at $|a_\mathrm{in}|^2 / \bar{\gamma} = 3\cdot 10^{-6}$, it is almost zero, and the solution of the full model coincides with the one of the semiclassical model.
-Thus, the semiclassical model is applicable for the system of two qubits coupled to a waveguide only when the quantum correlations between the qubits are negligible, i.e., at the low incident powers, namely, $|a_\mathrm{in}|^2 < \gamma_D$.
+Thus, the semiclassical model applies to the system of two qubits coupled to a waveguide only when the quantum correlations between the qubits are negligible, i.e., at low incident powers, namely, $|a_\mathrm{in}|^2 < \gamma_D$.
 To observe nonreciprocity in such a system, one has to consider the quantum correlations between the qubits because, as we showed above, they play a crucial role in the nature of the whole effect.
 
 \section{Conclusion}
 
 In this work, we have thoroughly examined the behaviour of a system composed of two superconducting qubits in a transmon regime coupled to a 1D waveguide, with a specific focus on the phenomenon of nonreciprocity. 
-Nonreciprocity in such and similar systems has been previously documented~\cite{dai_rectification_2015, muller_nonreciprocal_2017, rosario_hamann_nonreciprocity_2018, Nefedkin2022, trivedi_fano-qubits_2023}, and our objective was to investigate the influence of approximations in theoretical models on the observed nonreciprocal effects, as well as to identify critical factors that should be taken into account.
+Nonreciprocity in such and similar systems has been previously documented~\cite{dai_rectification_2015, muller_nonreciprocal_2017, rosario_hamann_nonreciprocity_2018, Nefedkin2022, trivedi_fano-qubits_2023}, and our objective has been to investigate the influence of conventional approximations in the qubit models on the observed nonreciprocal effects, as well as to identify critical factors that should be taken into account.
 We use the real parameters of the qubits from ref.~\cite{rosario_hamann_nonreciprocity_2018} listed in Tab.~\ref{tab:01}.
 
 Our investigation has revealed that, for qubits operating in a transmon regime characterized by weak anharmonicity, the inclusion of higher energy levels of the qubits leads to noticeable alterations in the system's dynamics. 
@@ -563,16 +569,12 @@ Furthermore, our investigation underscores the critical importance of considerin
 The semiclassical model, which relies on factorized expectation values of operator products, fails to approximate the system's dynamics adequately. 
 This inadequacy arises from the strong correlations, denoted as $\langle \sigma_j^+ \sigma_k \rangle$ for $j\neq k$, induced in the system in the nonreciprocal regime. 
 Notably, these correlations weaken at lower incident powers ($|a_\mathrm{in}|^2 < \gamma_D$), enabling the use of the semiclassical approximation within this regime.
+Note that if one increases the number of qubits in the system, the approximations we made, such as a Markov approximation and RWA, may stop working at the parameter range we used in the paper, which is worth a separate investigation.
 
 These findings provide insights into the intricacies of nonreciprocal quantum systems, with direct implications for practical quantum device engineering. 
 For instance, for quantum diodes, understanding the impact of higher energy levels on nonreciprocity can lead to the design of more efficient and versatile devices for signal routing and processing. 
 Moreover, our exploration of the role of quantum correlations between qubits underscores the necessity of precision in modelling, which can be leveraged to develop advanced quantum communication systems. 
 These insights are pivotal for achieving the full potential of such systems. They will drive the refinement of theoretical models, ultimately enabling the design of more accurate and efficient quantum devices. 
-
-
-\subsection*{Acknowledgements}
-\noindent This should be a simple paragraph before the bibliography to thank those individuals and institutions who have supported your work on this article.
-
 
 
 \bibliography{ref}
