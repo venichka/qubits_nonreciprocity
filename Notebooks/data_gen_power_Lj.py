@@ -110,10 +110,10 @@ try:
     # Power L_j dependence
     from IPython.display import clear_output
     L_j_list = np.linspace(3.15e-9, 3.45e-9, NMAX)
-    np.insert(L_j_list, NMAX // 2, L_js[1])
-    eff = np.zeros((NMAX, NMAX))
-    trans_R = np.zeros((NMAX, NMAX))
-    trans_L = np.zeros((NMAX, NMAX))
+    L_j_list = np.insert(L_j_list, NMAX // 2, L_js[1])
+    eff = np.zeros((NMAX+1, NMAX))
+    trans_R = np.zeros((NMAX+1, NMAX))
+    trans_L = np.zeros((NMAX+1, NMAX))
     for j in range(len(L_j_list)):
         tr_R = np.array(qt.parallel_map(transmission_power_dependence,
                                         a_inc_list, task_args=(L_j_list[j],

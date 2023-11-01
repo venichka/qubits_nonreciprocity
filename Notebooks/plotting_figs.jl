@@ -120,7 +120,7 @@ begin
 		for i in N_excs, m in deltas["power"]]
 	data_power_t = [load_dict("power_t"; N_exc=i, delta=m, version="_v1.1") 
 		for i in N_excs, m in deltas["power_t"]]
-	data_power_Lj = [load_dict("power_Lj"; N_exc=i, version="") 
+	data_power_Lj = [load_dict("power_Lj"; N_exc=i, version="_v1.2") 
 		for i in N_excs]
 	data_power_Nexc = [load_dict("power_Nexc", delta=i) for i in deltas["power"]] 
 	data_meanfield = [load_dict("meanfield"; order=i, delta=m, version="") 
@@ -280,6 +280,9 @@ end
 # ╔═╡ 1e7e0136-a3de-4f49-8015-bb16166aeb8f
 data_power_Lj[1]
 
+# ╔═╡ 513ab8db-7209-4c7d-8f75-04660d6a2ef5
+z_1 = [data_power_Lj[i]["efficiency"] for i in eachindex(N_excs)]
+
 # ╔═╡ 047c1b14-28e9-4237-b50f-ce2d9c3fd491
 # Fig 5
 let
@@ -295,6 +298,19 @@ let
 	z_2 = [data_power_Lj[i]["transmission_L"] for i in eachindex(N_excs)]
 	z_3 = [data_power_Lj[i]["transmission_R"] for i in eachindex(N_excs)]
 
+	z_1[1][:,51] .= 0.0
+	z_1[2][:,51] .= 0.0
+	z_1[3][:,51] .= 0.0
+
+	z_2[1][:,51] .= (z_3[1][:,50] + z_3[1][:,52])*0.5
+	z_2[2][:,51] .= (z_3[2][:,50] + z_3[2][:,52])*0.5
+	z_2[3][:,51] .= (z_3[3][:,50] + z_3[3][:,52])*0.5
+
+	z_3[1][:,51] .= (z_3[1][:,50] + z_3[1][:,52])*0.5
+	z_3[2][:,51] .= (z_3[2][:,50] + z_3[2][:,52])*0.5
+	z_3[3][:,51] .= (z_3[3][:,50] + z_3[3][:,52])*0.5
+	
+	
 	kw = (
 		yscale=:log10,
 		xlims=(3.22, 3.38),
@@ -408,8 +424,8 @@ let
 	end
 	p = plot(p_1, p_2, p_3, p_4, p_5, layout=l, size=(1000,500))
 	# savefig(p, PATH_FIGS*"fig_5.pdf")
-	# Plots.svg(p, PATH_FIGS*"fig_5.svg")
-	p
+	# Plots.svg(p, PATH_FIGS*"fig_5_1.svg")
+	# p
 end
 
 # ╔═╡ 68dbe732-236d-4af2-b98d-0a2f8d2afcfa
@@ -2397,7 +2413,8 @@ version = "1.4.1+1"
 # ╠═c8321163-99e6-4e14-8f93-45f308370940
 # ╟─1c744290-a859-4a2d-8e4e-cd951331a476
 # ╠═1e7e0136-a3de-4f49-8015-bb16166aeb8f
-# ╟─047c1b14-28e9-4237-b50f-ce2d9c3fd491
+# ╠═513ab8db-7209-4c7d-8f75-04660d6a2ef5
+# ╠═047c1b14-28e9-4237-b50f-ce2d9c3fd491
 # ╟─68dbe732-236d-4af2-b98d-0a2f8d2afcfa
 # ╠═ee86760b-9308-4a25-b8b8-60adb442b7a9
 # ╟─e3eeecd4-0c17-45c8-b83e-cd071a02bad5
@@ -2422,7 +2439,7 @@ version = "1.4.1+1"
 # ╠═6fa23358-8fe7-47bf-90c3-2fa4321a25a9
 # ╠═c81f01ce-f8f5-4309-b977-0dc734eec48e
 # ╠═8f5fcba4-fcb4-4507-9560-7f7f551978c8
-# ╟─9a8c9810-3bf4-4a14-a53c-d4bc0600bfd8
+# ╠═9a8c9810-3bf4-4a14-a53c-d4bc0600bfd8
 # ╟─563d4760-e924-41c3-abfb-08e984815600
 # ╠═2b93634c-315f-42c5-ba3c-9c4083b604ca
 # ╠═be108252-cdc2-4a6d-ad44-3c07051842cb
