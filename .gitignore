@@ -6,7 +6,11 @@ __pycache__/
 # C extensions
 *.so
 
+# misc
 .DS_Store/
+.DS_Store
+Text/.DS_Store/
+*.zip
 
 # Distribution / packaging
 .Python
